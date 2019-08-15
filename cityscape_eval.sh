@@ -1,0 +1,15 @@
+python eval.py \
+    --logtostderr \
+    --eval_split="val" \
+    --model_variant="xception_65" \
+    --atrous_rates=6 \
+    --atrous_rates=12 \
+    --atrous_rates=18 \
+    --output_stride=16 \
+    --decoder_output_stride=4 \
+    --eval_crop_size=1025 \
+    --eval_crop_size=2049 \
+    --dataset="cityscapes" \
+    --checkpoint_dir=./datasets/cityscapes/exp/train_on_train_set/train \
+    --eval_logdir=./datasets/cityscapes/exp/train_on_train_set/eval \
+    --dataset_dir=./datasets/cityscapes/tfrecord

@@ -1,0 +1,16 @@
+python vis.py \
+	    --logtostderr \
+    --vis_split="val" \
+    --model_variant="xception_65" \
+    --atrous_rates=6 \
+    --atrous_rates=12 \
+    --atrous_rates=18 \
+    --output_stride=16 \
+    --decoder_output_stride=4 \
+    --vis_crop_size=1025 \
+    --vis_crop_size=2049 \
+    --dataset="cityscapes" \
+    --colormap_type="cityscapes" \
+    --checkpoint_dir=./datasets/cityscapes/exp/train_on_train_set/train \
+    --vis_logdir=./datasets/cityscapes/exp/train_on_train_set/vis \
+    --dataset_dir=./datasets/cityscapes/tfrecord

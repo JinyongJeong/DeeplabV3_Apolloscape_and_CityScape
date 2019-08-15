@@ -1,0 +1,18 @@
+python train.py\
+	--logtostderr \
+    --training_number_of_steps=90000 \
+    --train_split="train" \
+    --model_variant="xception_65" \
+    --atrous_rates=6 \
+    --atrous_rates=12 \
+    --atrous_rates=18 \
+    --output_stride=16 \
+    --decoder_output_stride=4 \
+    --train_crop_size=321 \
+    --train_crop_size=321 \
+    --train_batch_size=8\
+    --fine_tune_batch_norm=True\
+    --dataset="cityscapes" \
+    --tf_initial_checkpoint=./datasets/cityscapes/exp/train_on_train_set/train/model.ckpt.index \
+    --train_logdir=./datasets/cityscapes/exp/train_on_train_set/train \
+    --dataset_dir=./datasets/cityscapes/tfrecord
