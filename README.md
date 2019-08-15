@@ -2,7 +2,7 @@
 - Måtte oppgradere TF til 1.6.0
 - Grunnet at tf 1.6.0 ikke støtter alle cuda versjoner måtte jeg installere cuda 9.0: sudo apt-get -y install cuda-toolkit-9.0 -->
 
-Now processing for Apolloscape (Not complete yet)
+## Now processing for Apolloscape (Not complete yet)
 
 This repo is a copy of the network [DeepLabv3+](https://github.com/tensorflow/models/tree/master/research/deeplab) from google. I simply extracted the necessary code in order to run without having to download lots of unnecessary code.
 
