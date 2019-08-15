@@ -1,6 +1,6 @@
 python train.py\
 	--logtostderr \
-    --training_number_of_steps=90000 \
+    --training_number_of_steps=900000 \
     --train_split="train" \
     --model_variant="xception_65" \
     --atrous_rates=6 \

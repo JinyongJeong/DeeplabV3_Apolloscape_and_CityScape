@@ -17,48 +17,27 @@
 
 The Apolloscape dataset is expected to have the following directory structure:
 
-  + cityscapes
+  + apolloscape
      - build_cityscapes_data.py (current working directiory).
      - build_data.py
-     + cityscapesscripts
-       + annotation
-       + evaluation
-       + helpers
-       + preparation
-       + viewer
-     + gtFine
-       + train
-       + val
-       + test
-     + leftImg8bit
-       + train
-       + val
-       + test
-     + tfrecord
-
-This script converts data into sharded data files and save at tfrecord folder.
-
-Note that before running this script, the users should (1) register the
-Cityscapes dataset website at https://www.cityscapes-dataset.com to
-download the dataset, and (2) run the script provided by Cityscapes
-`preparation/createTrainIdLabelImgs.py` to generate the training groundtruth.
-
-Also note that the tensorflow model will be trained with `TrainId' instead
-of `EvalId' used on the evaluation server. Thus, the users need to convert
-the predicted labels to `EvalId` for evaluation on the server. See the
-vis.py for more details.
-
-The Example proto contains the following fields:
-
-  image/encoded: encoded image content.
-  image/filename: image filename.
-  image/format: image file format.
-  image/height: image height.
-  image/width: image width.
-  image/channels: image channels.
-  image/segmentation/class/encoded: encoded semantic segmentation content.
-  image/segmentation/class/format: semantic segmentation file format.
+       + ColorImage_roadXX
+       + Labels_roadXX
+        + Label
+          + RecordXXX
+            + Camera 5
+              *_Camera_5_bin.png
+            + Camera 6
+              *_Camera_6_bin.png
+       + ColorImage_roadXX
+         + ColorImage
+           + RecordXXX
+             + Camera 5
+               *_Camera_5.jpg
+             + Camera 6
+               *_Camera_6.jpg
+            
 """
+
 import glob
 import math
 import os.path
