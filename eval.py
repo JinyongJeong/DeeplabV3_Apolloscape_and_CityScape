@@ -90,19 +90,15 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def main(unused_argv):
-  print(bcolors.WARNING + "test1"  + bcolors.ENDC)
   tf.logging.set_verbosity(tf.logging.INFO)
   # Get dataset-dependent information.
   dataset = segmentation_dataset.get_dataset(
       FLAGS.dataset, FLAGS.eval_split, dataset_dir=FLAGS.dataset_dir)
-  print(bcolors.WARNING + "test2"  + bcolors.ENDC)
 
   tf.gfile.MakeDirs(FLAGS.eval_logdir)
   tf.logging.info('Evaluating on %s set', FLAGS.eval_split)
-  print(bcolors.WARNING + "test3"  + bcolors.ENDC)
 
   with tf.Graph().as_default():
-    print(bcolors.WARNING + "test3"  + bcolors.ENDC)
 
     samples = input_generator.get(
         dataset,
@@ -114,7 +110,6 @@ def main(unused_argv):
         dataset_split=FLAGS.eval_split,
         is_training=False,
         model_variant=FLAGS.model_variant)
-    print(bcolors.WARNING + "test4"  + bcolors.ENDC)
 
     model_options = common.ModelOptions(
         outputs_to_num_classes={common.OUTPUT_TYPE: dataset.num_classes},
@@ -122,7 +117,6 @@ def main(unused_argv):
         atrous_rates=FLAGS.atrous_rates,
         output_stride=FLAGS.output_stride)
 
-    print(bcolors.WARNING + "test5"  + bcolors.ENDC)
 
     if tuple(FLAGS.eval_scales) == (1.0,):
       tf.logging.info('Performing single-scale test.')
@@ -135,13 +129,11 @@ def main(unused_argv):
           model_options=model_options,
           eval_scales=FLAGS.eval_scales,
           add_flipped_images=FLAGS.add_flipped_images)
-    print(bcolors.WARNING + "test6"  + bcolors.ENDC)
 
     predictions = predictions[common.OUTPUT_TYPE]
     predictions = tf.reshape(predictions, shape=[-1])
     labels = tf.reshape(samples[common.LABEL], shape=[-1])
     weights = tf.to_float(tf.not_equal(labels, dataset.ignore_label))
-    print(bcolors.WARNING + "test7" + bcolors.ENDC)
 
     # Set ignore_label regions to label 0, because metrics.mean_iou requires
     # range of labels = [0, dataset.num_classes). Note the ignore_lable regions
@@ -154,7 +146,6 @@ def main(unused_argv):
       predictions_tag += '_' + str(eval_scale)
     if FLAGS.add_flipped_images:
       predictions_tag += '_flipped'
-    print(bcolors.WARNING + "test8" + bcolors.ENDC)
 
     # Define the evaluation metric.
     metric_map = {}
@@ -174,7 +165,6 @@ def main(unused_argv):
     tf.logging.info('Eval num images %d', dataset.num_samples)
     tf.logging.info('Eval batch size %d and num batch %d',
                     FLAGS.eval_batch_size, num_batches)
-    print(bcolors.WARNING + "test9" + bcolors.ENDC)
 
     num_eval_iters = None
     if FLAGS.max_number_of_evaluations > 0:
