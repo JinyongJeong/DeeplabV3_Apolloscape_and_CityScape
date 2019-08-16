@@ -159,7 +159,7 @@ def main(unused_argv):
     # Define the evaluation metric.
     metric_map = {}
     metric_map[predictions_tag] = tf.metrics.mean_iou(
-        predictions, labels, dataset.num_classes, weights=weights):q
+        predictions, labels, dataset.num_classes, weights=weights)
 
     metrics_to_values, metrics_to_updates = (
         tf.contrib.metrics.aggregate_metric_map(metric_map))
@@ -184,7 +184,7 @@ def main(unused_argv):
         checkpoint_dir=FLAGS.checkpoint_dir,
         logdir=FLAGS.eval_logdir,
         num_evals=num_batches,
-        eval_op=metrics_to_updates.values(),
+        eval_op=list(metrics_to_updates.values()),
         max_number_of_evaluations=num_eval_iters,
         eval_interval_secs=FLAGS.eval_interval_secs)
 
